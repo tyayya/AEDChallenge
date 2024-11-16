@@ -21,16 +21,16 @@ class SimpleParticipant:
                 availability: dict[str, bool]
                 ):
         self.id = id
-        self.year = year # done
-        self.program_skills = program_skills # done
-        self.experience = experience # done
-        self.hackathons = hackathons    # done
-        self.roles = roles # done
-        self.languages = languages # done
+        self.year = year 
+        self.program_skills = program_skills 
+        self.experience = experience 
+        self.hackathons = hackathons 
+        self.roles = roles
+        self.languages = languages 
         self.challenges = challenges
         self.interests = interests
         self.objective = objective
-        self.availability = availability # done
+        self.availability = availability 
 
     
     def run(self):
@@ -91,7 +91,6 @@ class SimpleParticipant:
 
     def simple_roles(self) -> int:
         roles:int
-        # the roles are: "Analysis", "Visualization", "Development", "Design", "Don't know", "Don't care"
         match self.roles:
             case "Analysis":
                 roles = 1
