@@ -1,4 +1,6 @@
 from algoritme_graf import *
+from vectorization_texts import *
+
 
 id_usuari = input("Introducir id de usuario: ")
 G = crear_grafo(participants)
@@ -25,5 +27,8 @@ if len(recomendados) < G.nodes[id_usuari]['preferred_team_size']:
                     recomendados.append(node)
             else:
                 break
+
+if id_usuari in recomendados:
+    recomendados.remove(id_usuari)
 
 print(recomendados)

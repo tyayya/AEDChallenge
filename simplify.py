@@ -33,13 +33,9 @@ class SimpleParticipant:
         self.challenges = challenges
         self.interests = interests
         self.objective = objective
-<<<<<<< HEAD
         self.availability = availability # done
         self.friend_registration = friend_registration
         self.preferred_team_size = preferred_team_size
-=======
-        self.availability = availability 
->>>>>>> 3edc53eb94fbdfe7e66846dc33784890d9743a9a
 
     
     def run(self):
@@ -49,8 +45,7 @@ class SimpleParticipant:
         self.program_skills = self.simple_skills()
         self.experience = self.simple_experience()
         self.roles = self.simple_roles()
-        self.interests = self.simple_interests()
-        self.objective = self.simple_objective()
+        
 
 
     def check_availability(self) -> list[bool]:
@@ -116,24 +111,6 @@ class SimpleParticipant:
         
         return roles
 
-
-    def simple_interests(self) -> str:
-        """ 
-        En esta funcion se llamará a otra función que utilize una api de inteligencia artificial que devuelva
-        palabras relacionadas con los intereses del participante, entonces, en la funcion de comparacion
-        se compararán las palabras devueltas por la api con las palabras de los otros participantes usando
-        otra api de inteligencia artificial que devuelva un número entre 0 y 1 que será la similitud entre los
-        intereses de los participantes
-        """
-        return "prize-hunting"
-
-    def simple_objective(self) -> int:
-        """
-        en esta funcion se llamará a otra función que utilize una api de inteligencia artificial que devuelva
-        una opcion entre las 4 que tendrá ["prize-hunting", "portfolio-building", "learning new skills", "meeting new people"]
-        entonces se devolverá un número entre 0 y 3 respectivamente
-        """
-        return 2
 
 def normalize_skills(skills_list):
     max_value = max(skills_list)

@@ -1,6 +1,6 @@
 import networkx as nx
-#import matplotlib.pyplot as plt
 from simplify import load_participants
+from vectorization_texts import *
 
 participants = load_participants() #Llista d'elements classe Participant
 
@@ -91,6 +91,8 @@ def conexiones_preferencias(G,id_usuari): #Función que crea las aristas entre e
             weight += preferencias_experiencia(G,id_usuari,node)
             weight += preferencias_prioritarias(G,id_usuari,node)
             weight += preferencias_min(G,id_usuari,node)
+            weight += calcular_similitud_intereses(G.nodes[id_usuari]['interests'],G.nodes[node]['interests'])
+            weight += calcular_similitud_objetivos(G.nodes[id_usuari]['objective'],G.nodes[node]['objective'])
         if weight > 0:
             H.add_edge(id_usuari, node, weight=weight) #Nuevo grafo H formado por todas las nuevas conexiones del usuario
 
