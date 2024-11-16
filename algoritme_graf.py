@@ -1,14 +1,14 @@
 import networkx as nx
 #import matplotlib.pyplot as plt
-from participant import load_participants
+from simplify import load_participants
 
-participants = load_participants('C:/Users/Aya/OneDrive/Documentos/GitHub/AEDChallenge/data/datathon_participants.json') #Llista d'elements classe Participant
+participants = load_participants() #Llista d'elements classe Participant
 
 def crear_grafo(participants): #Función que crea un grafo con los participantes como nodos y sus atributos como atributos de los nodos
     G = nx.Graph()
 
     #Lista de atributos de la nueva clase SimpleParticipant
-    atributs = ['year_of_study','programming_skills','experiencie_level','hackathons_done','preferred_roles','preferred_languages','interest_in_challenges','friend_registration','preferred_team_size','interests','objective','availability']
+    atributs = ['year','program_skills','experience','hackathons','roles','languages','challenges','friend_registration','preferred_team_size','interests','objective','availability']
 
     #Convertir los participantes en nodos
     for participant in participants:
@@ -20,13 +20,14 @@ def crear_grafo(participants): #Función que crea un grafo con los participantes
             # Usar getattr para obtener el valor del atributo dinámicamente
             valor = getattr(participant, característica, None)  # None si no existe el atributo
             G.nodes[participant.id][característica] = valor
+    return G
 
 
 def conexiones_amigos(G,id_usuari): #Función que crea las aristas entre el nodo del usuario si cumplen la condición de friend_registration del nodo usuario
     
     G_amistats = nx.Graph()
 
-    for node in G[id_usuari]['friend_registration']:  
+    for node in G.nodes[id_usuari]['friend_registration']:  
     # Crear una arista entre el nodo y cada uno de sus amigos
          G_amistats.add_edge(id_usuari, node)
     return G_amistats
@@ -39,10 +40,10 @@ def comparar_disponibilidad(horas_usuari, horas_x): #Función que comprueba si s
 
 def preferencias_experiencia(G,id_usuari,id_x): #Función que compara el nivel de experiencia entre usuarios
 
-    atributos_exp = ['years_of_study','experience_level','hackathons_done','programming_skills']
+    atributos_exp = ['year','experience','hackathons','program_skills']
     weight = 0
     for atributo in atributos_exp:
-        if G[id_usuari][atributo] == G[id_x][atributo]:
+        if G.nodes[id_usuari][atributo] == G.nodes[id_x][atributo]:
             weight+=1
     return weight
 
@@ -51,13 +52,13 @@ def preferencias_prioritarias(G,id_usuari,id_x): #Función que compara los objet
 
     weight = 0
 
-    for element in G[id_usuari]['interest_in_challenges']:
-        if element in G[id_x]['interest_in_challenges']:
+    for element in G.nodes[id_usuari]['challenges']:
+        if element in G.nodes[id_x]['challenges']:
             weight += 1
             break
     
-    for element in G[id_usuari]['preferred_languages']:
-        if element in G[id_x]['preferred_languages']:
+    for element in G.nodes[id_usuari]['languages']:
+        if element in G.nodes[id_x]['languages']:
             weight += 1
             break 
     
@@ -69,7 +70,7 @@ def preferencias_prioritarias(G,id_usuari,id_x): #Función que compara los objet
 def preferencias_min(G,id_usuari,id_x): #Función que compara intereses ajenos y compativilidad del rol
 
     weight = 0
-    if G[id_usuari]['preferred_role'] != G[id_x]['preferred_role']:
+    if G.nodes[id_usuari]['roles'] != G.nodes[id_x]['roles']:
         weight +=1
 
     #Falta implementar interest
@@ -85,13 +86,13 @@ def conexiones_preferencias(G,id_usuari): #Función que crea las aristas entre e
         G.remove_node(node)
     
     for node in G.nodes():
-        if comparar_disponibilidad(G[id_usuari]['availability'],G[node]['availability']):
+        if comparar_disponibilidad(G.nodes[id_usuari]['availability'],G.nodes[node]['availability']):
             weight = 0
             weight += preferencias_experiencia(G,id_usuari,node)
             weight += preferencias_prioritarias(G,id_usuari,node)
             weight += preferencias_min(G,id_usuari,node)
         if weight > 0:
-            H[id_usuari][node]['weight'] = weight #Nuevo grafo H formado por todas las nuevas conexiones del usuario
+            H.add_edge(id_usuari, node, weight=weight) #Nuevo grafo H formado por todas las nuevas conexiones del usuario
 
     return H
 

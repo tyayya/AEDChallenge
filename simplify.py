@@ -18,7 +18,10 @@ class SimpleParticipant:
                 challenges: list[str], 
                 interests: list[str], 
                 objective: str, 
-                availability: dict[str, bool]
+                availability: dict[str, bool],
+                friend_registration: list[uuid.UUID],
+                preferred_team_size: int,
+
                 ):
         self.id = id
         self.year = year # done
@@ -31,6 +34,8 @@ class SimpleParticipant:
         self.interests = interests
         self.objective = objective
         self.availability = availability # done
+        self.friend_registration = friend_registration
+        self.preferred_team_size = preferred_team_size
 
     
     def run(self):
@@ -148,7 +153,9 @@ def load_participants():
             participant.interest_in_challenges,
             participant.interests,
             participant.objective,
-            participant.availability
+            participant.availability,
+            participant.friend_registration,
+            participant.preferred_team_size
         )
 
         simple_participant.run()
