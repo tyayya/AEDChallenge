@@ -1,7 +1,7 @@
 import json
 import pathlib
 import uuid
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 from typing import Dict, List, Literal
 
 
@@ -52,4 +52,66 @@ def load_participants(path: str) -> List[Participant]:
             f"The file {path} is not a JSON file, are you sure you're using the correct file?"
         )
 
-    return [Participant(**participant) for participant in json.load(open(path))]
+    # Convert UUID strings back to UUID objects
+    participants_data = json.load(open(path))
+    for participant in participants_data:
+        participant["id"] = uuid.UUID(participant["id"])
+        participant["friend_registration"] = [
+            uuid.UUID(friend_id) for friend_id in participant["friend_registration"]
+        ]
+    return [Participant(**participant) for participant in participants_data]
+
+
+def save_participant(data: dict, path: str = "datathon_participants.json"):
+    """Create a Participant object from data and save it to a JSON file."""
+    # Verify if the file exists, and if not, initialize it as an empty list
+    if not pathlib.Path(path).exists():
+        with open(path, "w") as f:
+            json.dump([], f)
+
+    # Create a Participant object
+    participant = Participant(
+        id=uuid.uuid4(),
+        name=data["name"],
+        email=data["email"],
+        age=data["age"],
+        year_of_study=data["year_of_study"],
+        shirt_size=data["shirt_size"],
+        university=data["university"],
+        dietary_restrictions=data["dietary_restrictions"],
+        interests=data["interests"],
+        preferred_role=data["preferred_role"],
+        experience_level=data["experience_level"],
+        hackathons_done=data["hackathons_done"],
+        objective=data["objective"],
+        introduction=data["introduction"],
+        technical_project=data["technical_project"],
+        future_excitement=data["future_excitement"],
+        fun_fact=data["fun_fact"],
+        preferred_languages=data["preferred_languages"],
+        friend_registration=[
+            uuid.UUID(friend_id) for friend_id in data["friend_registration"]
+        ],
+        preferred_team_size=data["preferred_team_size"],
+        availability=data["availability"],    
+        programming_skills=data["programming_skills"],
+        interest_in_challenges=data["interest_in_challenges"],
+    )
+
+    # Convert Participant object to a dictionary and serialize UUIDs to strings
+    participant_data = asdict(participant)
+    participant_data["id"] = str(participant_data["id"])
+    participant_data["friend_registration"] = [
+        str(friend_id) for friend_id in participant_data["friend_registration"]
+    ]
+
+    # Load existing participants
+    with open(path, "r") as f:
+        participants = json.load(f)
+
+    # Add the new participant
+    participants.append(participant_data)
+
+    # Save updated participants
+    with open(path, "w") as f:
+        json.dump(participants, f, indent=4)
