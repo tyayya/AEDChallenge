@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+    <link rel="stylesheet" href="styleDatos.css">
+</head>
+<body>
+    <h1>Formulario de Registro</h1>
+    <form action="/add-participant" method="post">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="age">Edad:</label>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <label for="year_of_study">Año de Estudio:</label>
+        <select id="year_of_study" name="year_of_study" required>
+            <option value="1st Year">1st Year</option>
+            <option value="2nd Year">2nd Year</option>
+            <option value="3rd Year">3rd Year</option>
+            <option value="4th Year">4th Year</option>
+            <option value="Masters">Masters</option>
+            <option value="PhD">PhD</option>
+        </select><br><br>
+
+        <label for="shirt_size">Tamaño de Camiseta:</label>
+        <select id="shirt_size" name="shirt_size" required>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+        </select><br><br>
+
+        <label for="university">Universidad:</label>
+        <input type="text" id="university" name="university" required><br><br>
+
+        <label for="dietary_restrictions">Restricciones Dietéticas:</label>
+        <select id="dietary_restrictions" name="dietary_restrictions">
+            <option value="None">None</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Vegan">Vegan</option>
+            <option value="Gluten-free">Gluten-free</option>
+            <option value="Other">Other</option>
+        </select><br><br>
+
+        <label for="programming_skills">Habilidades de Programación:</label>
+        <input type="text" id="programming_skills" name="programming_skills" required><br><br>
+
+        <label for="experience_level">Nivel de Experiencia:</label>
+        <select id="experience_level" name="experience_level" required>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+        </select><br><br>
+
+        <label for="hackathons_done">Hackathons Realizados:</label>
+        <input type="number" id="hackathons_done" name="hackathons_done" required><br><br>
+
+        <label for="interests">Intereses:</label>
+        <input type="text" id="interests" name="interests" required><br><br>
+
+        <label for="preferred_role">Rol Preferido:</label>
+        <select id="preferred_role name="preferred_role" required>
+            <option value="Analysis">Analysis</option>
+            <option value="Visualization">Visualization</option>
+            <option value="Development">Development</option>
+            <option value="Design">Design</option>
+        </select><br><br>
+
+        <label for="objective">Objetivo:</label>
+        <textarea id="objective" name="objective" rows="4" cols="50" ></textarea><br><br>
+
+        <label for="interest_in_challenges">Interés en Retos:</label>
+        <input type="text" id="interest_in_challenges" name="interest_in_challenges" required><br><br>
+
+        <label for="preferred_languages">Lenguajes Preferidos:</label>
+        <input type="text" id="preferred_languages" name="preferred_languages" required><br><br>
+
+        <label for="friend_registration">Registro de Amigos:</label>
+        <input type="text" id="friend_registration" name="friend_registration"><br><br>
+
+        <label for="preferred_team_size">Tamaño de Equipo Preferido:</label>
+        <input type="text" id="preferred_team_size" name="preferred_team_size" required><br><br>
+
+        <label for="availability">Disponibilidad:</label>
+        <input type="text" id="availability" name="availability" required><br><br>
+
+        <label for="introduction">Introducción:</label>
+        <textarea id="introduction" name="introduction" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="technical_project">Proyecto Técnico:</label>
+        <textarea id="technical_project" name="technical_project" rows="4" cols="50"></textarea><br><br>
+
+        <label for="future_excitement">Emoción por el Futuro:</label>
+        <textarea id="future_excitement" name="future_excitement" rows="4" cols="50"></textarea><br><br>
+
+        <label for="fun_fact">Dato Curioso:</label>
+        <textarea id="fun_fact" name="fun_fact" rows="4" cols="50"></textarea><br><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
