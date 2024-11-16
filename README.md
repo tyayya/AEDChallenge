@@ -23,7 +23,7 @@ Make sure to create appropriate visualizations and dashboards to help participan
 1. [Clone this repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) with Git, GitHub Desktop or by downloading the ZIP file.
 
 ```bash
-git clone https://github.com/RepteAED/datathon-fme-2024.git
+git clone https://github.com/data-students/AEDChallenge
 ```
 
 2. Install [Python](https://www.python.org/downloads/) (3.10 or higher)
@@ -31,7 +31,7 @@ git clone https://github.com/RepteAED/datathon-fme-2024.git
 3. Enter the project directory
 
 ```bash
-cd datathon-fme-2024
+cd AEDChallenge
 ```
 
 4. Install the project dependencies using [pip](https://pip.pypa.io/en/stable/getting-started/)
