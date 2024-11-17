@@ -86,8 +86,8 @@ def conexiones_preferencias(G,id_usuari): #Función que crea las aristas entre e
         G.remove_node(node)
     
     for node in G.nodes():
+        weight = 0
         if comparar_disponibilidad(G.nodes[id_usuari]['availability'],G.nodes[node]['availability']):
-            weight = 0
             weight += preferencias_experiencia(G,id_usuari,node)
             weight += preferencias_prioritarias(G,id_usuari,node)
             weight += preferencias_min(G,id_usuari,node)
