@@ -48545,42 +48545,7 @@
         ]
     },
     {
-        "id": "11d7f554-8486-4453-b08c-4bf14d577177",
-        "name": "a",
-        "email": "a@gmail.com",
-        "age": 2,
-        "year_of_study": "1st Year",
-        "shirt_size": "S",
-        "university": "2",
-        "dietary_restrictions": "None",
-        "programming_skills": {
-            "2": 1
-        },
-        "experience_level": "Beginner",
-        "hackathons_done": 2,
-        "interests": [
-            "2"
-        ],
-        "preferred_role": "Analysis",
-        "objective": "2",
-        "interest_in_challenges": [
-            "2"
-        ],
-        "preferred_languages": [
-            "2"
-        ],
-        "friend_registration": [],
-        "preferred_team_size": 2,
-        "availability": {
-            "2": true
-        },
-        "introduction": "2",
-        "technical_project": "",
-        "future_excitement": "",
-        "fun_fact": ""
-    },
-    {
-        "id": "ef27ab5f-b8bd-40df-9868-4853012a04f3",
+        "id": "b1a7ef60-e6c6-4f69-96c3-0298ae8fa498",
         "name": "a",
         "email": "a@gmail.com",
         "age": 2,

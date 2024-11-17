@@ -3,15 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recomendaciones</title>
-    <link rel="stylesheet" href="styleEquipos.css">
+    <title>Team Recommendations</title>
+    <!-- Previous styles remain the same -->
 </head>
 <body>
-    <h1>Recomendaciones de Equipo</h1>
+    <div id="particles-js"></div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/datos">Register</a></li>
+        </ul>
+    </nav>
+    <h1>Recommended Team Members</h1>
     <div class="recommendation-container">
-        <!-- Las tarjetas se generan dinámicamente aquí -->
+        <!-- Cards will be loaded here -->
     </div>
-    <script src="recom.js"></script>
-    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            console.log('DOM loaded, fetching candidates...');
+            try {
+                // Update fetch path to root directory where perfiles.json is created
+                const response = await fetch('/perfiles.json');
+                console.log('JSON response:', response);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const perfilesData = await response.json();
+                console.log('Profiles loaded:', perfilesData);
+                
+                const container = document.querySelector('.recommendation-container');
+                perfilesData.forEach((perfil, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'recommendation-card';
+                    card.innerHTML = `
+                        <h2>${perfil[0] || 'Unknown'}</h2>
+                        <p class="age"><strong>Age:</strong> ${perfil[1] || 'N/A'}</p>
+                        <button class="reject-btn">Reject</button>
+                        <p class="intro">${perfil[2] || 'No introduction available.'}</p>
+                    `;
+                    
+                    card.querySelector('.reject-btn').addEventListener('click', () => {
+                        card.remove();
+                    });
+                    
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error loading profiles:', error);
+                document.querySelector('.recommendation-container').innerHTML = 
+                    '<p>Error loading recommendations. Please try again later.</p>';
+            }
+        });
+    </script>
 </body>
 </html>

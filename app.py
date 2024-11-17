@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, send_file
 import json
 import pathlib
 from participant import save_participant
@@ -73,6 +73,10 @@ def register():
 @app.route("/equipos")
 def equipos():
     return render_template("equipos.html")
+
+@app.route('/perfiles.json')
+def serve_perfiles():
+    return send_file('perfiles.json')
 
 if __name__ == "__main__":
     # Asegúrate de que el archivo JSON existe
