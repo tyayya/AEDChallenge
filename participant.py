@@ -3,7 +3,9 @@ import pathlib
 import uuid
 from dataclasses import dataclass, asdict
 from typing import Dict, List, Literal
+import os
 
+current_directory = os.getcwd()
 
 @dataclass
 class Participant:
@@ -62,12 +64,7 @@ def load_participants(path: str) -> List[Participant]:
     return [Participant(**participant) for participant in participants_data]
 
 
-def save_participant(data: dict, path: str = "datathon_participants.json"):
-    """Create a Participant object from data and save it to a JSON file."""
-    # Verify if the file exists, and if not, initialize it as an empty list
-    if not pathlib.Path(path).exists():
-        with open(path, "w") as f:
-            json.dump([], f)
+def save_participant(data: dict, path: str = (current_directory + "/data/datathon_participants.json")):
 
     # Create a Participant object
     participant = Participant(

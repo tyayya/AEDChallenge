@@ -2,14 +2,26 @@ from flask import Flask, request, render_template, redirect, url_for
 import json
 import pathlib
 from participant import save_participant
+import os
 
-app = Flask(__name__)
+current_directory = os.getcwd()
+
+# Crear la app usando el directorio actual como carpeta de templates
+app = Flask(__name__, template_folder=current_directory)
 
 # Ruta al JSON de participantes
-DATA_PATH = "datathon_participants.json"
+DATA_PATH = (current_directory + "/data/datathon_participants.json")
+
+@app.route("/")
+def main():
+    return render_template("main.html")
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/datos.html")
+def datos():
+    return render_template("datos.html")
+
+@app.route("/submit", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
         # Captura los datos enviados por el formulario
@@ -50,10 +62,13 @@ def register():
         save_participant(data, path=DATA_PATH)
 
         # Redirige a la página para buscar equipo
-        return redirect(url_for("buscar_equipo"))
+        return redirect(url_for(""))
     
     # Si es un GET, solo renderiza el formulario
     return render_template("datos.html")
+
+
+
 
 # Ruta que renderiza buscar_equipo.html
 @app.route("/buscar_equipo")
