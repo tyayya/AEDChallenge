@@ -1,0 +1,110 @@
+/* Fondo de partículas */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Fondo detrás del contenido */
+    background-color: #ffffff; /* Fondo blanco como fallback */
+}
+
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    overflow: hidden; /* Evita el scroll */
+}
+
+h1 {
+    margin-left: 20%;
+}
+
+/* Barra de navegación */
+.navbar {
+    background-color: #003366;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.navbar ul li a:hover {
+    text-decoration: underline;
+}
+
+
+
+.recommendation-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px;
+}
+
+.recommendation-card {
+    position: relative;
+    background-color: #c9d2d8;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+}
+
+.recommendation-card h2 {
+    grid-column: 1 / spa;
+    margin-left: 1cm;
+    font-size: 1.2rem;
+}
+
+.recommendation-card .age {
+    margin: 0;
+    align-self:flex-start;
+}
+
+.recommendation-card .intro {
+    grid-column: 2 / -1;
+    margin-left: 1cm;
+    font-size: 1rem;
+    color: #555;
+    padding-left: 3cm;
+}
+
+.recommendation-card .reject-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ffc107;
+    border: none;
+    color: #000;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.recommendation-card .reject-btn:hover {
+    background-color: #e0a800;
+}
