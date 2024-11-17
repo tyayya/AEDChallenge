@@ -9,6 +9,8 @@ class SimpleParticipant:
     def __init__(
                 self, 
                 id: uuid.UUID, 
+                name: str,
+                age: str,
                 year: str, 
                 program_skills: dict[str, int],
                 experience: str, 
@@ -18,12 +20,15 @@ class SimpleParticipant:
                 challenges: list[str], 
                 interests: list[str], 
                 objective: str, 
+                introduction: str,
                 availability: dict[str, bool],
                 friend_registration: list[uuid.UUID],
                 preferred_team_size: int,
 
                 ):
         self.id = id
+        self.name = name
+        self.age = age
         self.year = year 
         self.program_skills = program_skills 
         self.experience = experience 
@@ -33,6 +38,7 @@ class SimpleParticipant:
         self.challenges = challenges
         self.interests = interests
         self.objective = objective
+        self.introduction = introduction
         self.availability = availability # done
         self.friend_registration = friend_registration
         self.preferred_team_size = preferred_team_size
@@ -124,6 +130,8 @@ def load_participants():
     for participant in participants:
         simple_participant = SimpleParticipant(
             participant.id,
+            participant.name,
+            participant.age,
             participant.year_of_study,
             participant.programming_skills,
             participant.experience_level,
@@ -133,6 +141,7 @@ def load_participants():
             participant.interest_in_challenges,
             participant.interests,
             participant.objective,
+            participant.introduction,
             participant.availability,
             participant.friend_registration,
             participant.preferred_team_size
