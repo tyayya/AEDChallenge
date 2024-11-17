@@ -3,23 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Inicio</title>
+    <title>Datathon 2024</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styleMain.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <!-- Fondo de partículas -->
+    <div id="particles-js"></div>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="detalles.html">Detalles</a></li>
+            <li><a href="horario.html">Horario</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
     <header>
-        <img src="favicon.ico" alt="Logo">
-    </header>
-    <main>
-        <h1>Título Principal</h1>
-        <div class="button-container">
-            <a href="datos.html">BUSCA EQUIPO</a>
+        <div class="container header">
+            <img src="logo.png" alt="Logo Datathon" class="logo">
+            <h1 class="main-title">Datathon 2024</h1>
         </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <a href="datos.html" class="btn">Busca Equipo</a>
+            </div>
+        </section>
+
+    <!-- Texto central -->
+<section class="central-text">
+    <h2>No dejes que la soledad te arruine la Datathon, ¡encuentra equipo!</h2>
+</section>
+
+
+<!-- Sponsors -->
+       
+<section class="sponsors">
+    <div class="sponsor-text">
+        <p>Sponsored by</p>
+    </div>
+    <div class="sponsor-logos">
+        <img src="mango_logo.png" alt="Mango">
+        <img src="restbai_logo.png" alt="Restb.ai">
+        <img src="t2c_logo.png" alt="T2C">
+        <img src="schneider_logo.png" alt="Schneider Electric">
+        <img src="qualcomm_logo.png" alt="Qualcomm">
+        <img src="novartis_logo.png" alt="Novartis">
+        <img src="Salut_logo.png" alt="Salut">
+        <img src="dorahacks_logo.png" alt="Dorahacks">
+    </div>
+</section>
+
     </main>
+
     <footer>
-        <a href="contacto.html">Contacto</a>
-        <a href="sobre_mi.html">Sobre mí</a>
+        <div class="container footer">
+            <p>&copy; 2024 Datathon. Todos los derechos reservados.</p>
+        </div>
     </footer>
+
+    <!-- Biblioteca de Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- Configuración de partículas -->
+    <script src="particles-config.js"></script>
 </body>
 </html>
+
