@@ -61,7 +61,7 @@ def register():
         save_participant(data, path=DATA_PATH)
 
         # Redirige a la página para buscar equipo
-        return redirect(url_for(""))
+        return redirect(url_for("equipos"))
     
     # Si es un GET, solo renderiza el formulario
     return render_template("datos.html")
@@ -70,9 +70,9 @@ def register():
 
 
 # Ruta que renderiza buscar_equipo.html
-@app.route("/buscar_equipo")
-def buscar_equipo():
-    return render_template("buscar_equipo.html")
+@app.route("/equipos")
+def equipos():
+    return render_template("equipos.html")
 
 if __name__ == "__main__":
     # Asegúrate de que el archivo JSON existe
