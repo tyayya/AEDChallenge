@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datathon 2024</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Datathon</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* Fondo de partículas */
@@ -15,7 +15,7 @@
             top: 0;
             left: 0;
             z-index: -1;
-            background-color: #ffffff;
+            background-color: #ffff;
         }
 
         /* General Styles */
@@ -105,37 +105,23 @@
         .sponsor-logos {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            margin-top: 50px;
+            justify-content: center; /* Centra las imágenes horizontalmente */
+            gap: 20px; /* Espaciado entre imágenes */
+            margin-top: 30px;
         }
 
         .sponsor-logos img {
-            max-width: 120px;
-            margin: 10px;
-            height: auto;
+            max-width: 120px; /* Tamaño uniforme */
+            height: auto; /* Mantiene la proporción */
+            object-fit: contain;
         }
-
-        .sponsor-logos > div {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .sponsor-logos .row-1 img { max-width: 150px; }
-        .sponsor-logos .row-2 img { max-width: 120px; }
-        .sponsor-logos .row-3 img { max-width: 100px; }
-        .sponsor-logos .row-4 img { max-width: 80px; }
 
         .sponsor-text {
             font-size: 1rem;
             text-align: center;
-            position: relative;
-            margin-top: 50px;
+            margin-bottom: 20px;
             color: #003366;
-            font-weight: 400;
-            z-index: 10;
+            font-weight: bold;
         }
 
         /* Central Text */
@@ -184,7 +170,7 @@
     <!-- Contenido principal -->
     <header>
         <div class="container header">
-            <img src="./images/logo.png" alt="Logo Datathon" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo Datathon" class="logo">
             <h1 class="main-title">Datathon 2024</h1>
         </div>
     </header>
@@ -196,30 +182,27 @@
             </div>
         </section>
 
-    <!-- Texto central -->
-<section class="central-text">
-    <h2>No dejes que la soledad te arruine la Datathon, ¡encuentra equipo!</h2>
-</section>
+        <!-- Texto central -->
+        <section class="central-text">
+            <h2>No dejes que la soledad te arruine la Datathon, ¡encuentra equipo!</h2>
+        </section>
 
-
-<!-- Sponsors -->
-       
-<section class="sponsors">
-    <div class="sponsor-text">
-        <p>Sponsored by</p>
-    </div>
-    <div class="sponsor-logos">
-        <img src="./images/mango_logo.png" alt="Mango">
-        <img src="./images/restbai_logo.png" alt="Restb.ai">
-        <img src="./images/t2c_logo.png" alt="T2C">
-        <img src="./images/schneider_logo.png" alt="Schneider Electric">
-        <img src="./images/qualcomm_logo.png" alt="Qualcomm">
-        <img src="./images/novartis_logo.png" alt="Novartis">
-        <img src="./images/Salut_logo.png" alt="Salut">
-        <img src="./images/dorahacks_logo.png" alt="Dorahacks">
-    </div>
-</section>
-
+        <!-- Sponsors -->
+        <section class="sponsors">
+            <div class="sponsor-text">
+                <p>Sponsored by</p>
+            </div>
+            <div class="sponsor-logos">
+                <img src="{{ url_for('static', filename='images/mango_logo.png') }}" alt="Mango">
+                <img src="{{ url_for('static', filename='images/restbai_logo.png') }}" alt="Restb.ai">
+                <img src="{{ url_for('static', filename='images/t2c_logo.png') }}" alt="T2C">
+                <img src="{{ url_for('static', filename='images/schneider_logo.png') }}" alt="Schneider Electric">
+                <img src="{{ url_for('static', filename='images/qualcomm_logo.png') }}" alt="Qualcomm">
+                <img src="{{ url_for('static', filename='images/novartis_logo.png') }}" alt="Novartis">
+                <img src="{{ url_for('static', filename='images/Salut_logo.png') }}" alt="Salut">
+                <img src="{{ url_for('static', filename='images/dorahacks_logo.png') }}" alt="Dorahacks">
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -230,8 +213,15 @@
 
     <!-- Biblioteca de Particles.js -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <!-- Configuración de partículas -->
-    <script src="particles-config.js"></script>
+    <script src="{{ url_for('static', filename='images/js/particles-config.js') }}"></script>
+    
+    <!-- Initialize particles -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS.load('particles-js', "{{ url_for('static', filename='images/js/particles-config.js') }}", function() {
+                console.log('particles.js config loaded');
+            });
+        });
+    </script>
 </body>
 </html>
-
