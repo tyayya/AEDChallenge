@@ -6,10 +6,10 @@ import os
 
 current_directory = os.getcwd()
 
-app = Flask(__name__, template_folder=current_directory)
+app = Flask(__name__,template_folder=current_directory)
 
 # Ruta al JSON de participantes
-DATA_PATH = (current_directory + "/data/datathon_participants.json")
+DATA_PATH = os.path.join(current_directory, "data", "datathon_participants.json")
 
 @app.route("/")
 def main():

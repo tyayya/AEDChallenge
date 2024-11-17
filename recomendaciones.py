@@ -1,5 +1,5 @@
 from algoritme_graf import *
-from vectorization_texts import *
+from data.vectorization_texts import *
 
 
 id_usuari = input("Introducir id de usuario: ")
