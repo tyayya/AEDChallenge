@@ -1,8 +1,10 @@
 from algoritme_graf import *
 from data.vectorization_texts import *
+import uuid
 
-
-id_usuari = input("Introducir id de usuario: ")
+participants = load_participants()
+id_str = input("Introducir id de usuario: ")
+id_usuari = uuid.UUID(id_str)
 G = crear_grafo(participants)
 
 recomendados = []
