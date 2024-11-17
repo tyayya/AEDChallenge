@@ -1,6 +1,6 @@
 import networkx as nx
 from simplify import load_participants
-from vectorization_texts import *
+from data.vectorization_texts import *
 
 participants = load_participants() #Llista d'elements classe Participant
 

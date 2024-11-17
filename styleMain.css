@@ -1,79 +1,184 @@
+/* Fondo de partículas */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Asegura que esté detrás del contenido principal */
+    background-color: #ffffff; /* Fondo blanco por si las partículas no cargan */
+}
+
+/* General Styles */
 body {
     margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Barra de navegación */
+.navbar {
+    background-color: #003366;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.navbar ul {
+    list-style-type: none;
     padding: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: linear-gradient(to bottom, #000000, #434343);
-    color: white;
-    font-family: 'Arial', sans-serif;
-    overflow: hidden;
-}
-
-header {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-header img {
-    height: 50px;
-    margin-right: 15px;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-    text-align: center;
-}
-
-h1 {
-    font-size: 4em;
     margin: 0;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.button-container {
-    margin-top: 20px;
-}
-
-.button-container a {
-    padding: 15px 30px;
-    background-color: #ffffff;
-    color: #000000;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.button-container a:hover {
-    background-color: #000000;
-    color: #ffffff;
-}
-
-footer {
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    text-align: center;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.5);
-}
-
-footer a {
-    color: #ffffff;
-    text-decoration: none;
+.navbar ul li {
+    display: inline;
     margin: 0 15px;
-    font-size: 1em;
-    transition: color 0.3s;
 }
 
-footer a:hover {
-    color: #cccccc;
+.navbar ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.navbar ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Header */
+header {
+    position: relative;
+    background-color: #003366;
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+}
+
+header .logo {
+    width: 150px;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+header .main-title {
+    font-size: 3.5rem;
+    margin-top: 0;
+    font-weight: 700;
+}
+
+/* Hero Section */
+.hero {
+    background: url('https://www.datathon.cat/assets/img/datathon_2022.jpg') no-repeat center center/cover;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content a {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    background-color: #ffcc00;
+    color: #003366;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.hero-content a:hover {
+    background-color: #e6b800;
+}
+
+/* Sponsors */
+/* Estilo para los logos de patrocinadores */
+.sponsor-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centra los logos */
+    align-items: center;
+    margin-top: 50px; /* Espacio superior */
+}
+
+.sponsor-logos img {
+    max-width: 120px; /* Reducción del tamaño máximo de cada logo */
+    margin: 10px;
+    height: auto; /* Mantener la proporción de la imagen */
+}
+
+/* Alinear los logos en forma de pirámide invertida */
+.sponsor-logos > div {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espaciado entre logos */
+    margin-bottom: 20px; /* Espacio entre las filas */
+}
+
+/* Establecer el número de logos por fila para lograr el efecto de pirámide invertida */
+.sponsor-logos .row-1 img {
+    max-width: 150px;
+}
+
+.sponsor-logos .row-2 img {
+    max-width: 120px;
+}
+
+.sponsor-logos .row-3 img {
+    max-width: 100px;
+}
+
+.sponsor-logos .row-4 img {
+    max-width: 80px;
+}
+
+/* Estilos para el texto "Patrocinado por" */
+.sponsor-text {
+    font-size: 1rem; /* Ajusta el tamaño del texto */
+    text-align: center;
+    position: relative; /* Hacemos que el texto esté relativamente posicionado */
+    margin-top: 50px; /* Controlamos el desplazamiento del texto */
+    color: #003366;
+    font-weight: 400;
+    z-index: 10; /* Asegura que el texto esté sobre los logos */
+}
+
+/* Estilo de los logos de los patrocinadores */
+.sponsor-logos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    position: relative; /* Necesario para el manejo del texto */
+    z-index: 1; /* Asegura que los logos estén por debajo del texto */
+}
+
+/* Estilo para el texto central */
+.central-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrado exacto en la página */
+    text-align: center;
+    color: #003366; /* Color azul */
+    font-size: 1.5rem; /* Tamaño más pequeño */
+    font-weight: bold; /* Hacerlo en negrita */
+    z-index: 20; /* Asegurarnos de que esté sobre otros elementos */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra de texto para mejor legibilidad */
+    max-width: 90%; /* Para evitar que se salga de la pantalla en pantallas grandes */
+}
+
+
+
+
+/* Footer */
+footer {
+    background-color: #003366;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
 }

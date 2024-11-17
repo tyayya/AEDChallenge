@@ -6,20 +6,19 @@ import os
 
 current_directory = os.getcwd()
 
-# Crear la app usando el directorio actual como carpeta de templates
-app = Flask(__name__, template_folder=current_directory)
+app = Flask(__name__,template_folder=current_directory,static_folder=os.path.join(current_directory, 'static'))
 
 # Ruta al JSON de participantes
-DATA_PATH = (current_directory + "/data/datathon_participants.json")
+DATA_PATH = os.path.join(current_directory, "data", "datathon_participants.json")
 
 @app.route("/")
 def main():
     return render_template("main.html")
 
-
 @app.route("/datos.html")
 def datos():
     return render_template("datos.html")
+
 
 @app.route("/submit", methods=["GET", "POST"])
 def register():

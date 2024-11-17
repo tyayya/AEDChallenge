@@ -64,7 +64,8 @@ def load_participants(path: str) -> List[Participant]:
     return [Participant(**participant) for participant in participants_data]
 
 
-def save_participant(data: dict, path: str = (current_directory + "/data/datathon_participants.json")):
+def save_participant(data: dict, path: str = (current_directory + "datathon_participants.json")):
+    """Create a Participant object from data and save it to a JSON file."""
 
     # Create a Participant object
     participant = Participant(
